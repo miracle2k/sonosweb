@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<title>iSONOS!</title>
+		<style type="text/css" media="all">@import "inc/main.css";</style>
+		<script src="inc/prototype.js" type="text/javascript"></script>
+		<script src="inc/scriptaculous.js" type="text/javascript"></script>
+		<script src="inc/iSonos.js" type="text/javascript"></script>
+		<!--[if lt IE 7]><style type="text/css" media="all">@import "inc/ie.css";</style><![endif]-->
+	</head>
+	<body onload="initWebKitSearch(); ajaxUpdate();">
+		<div id="iSONOS1"><div id="iSONOS2"><div id="iSONOS3">
+			<div id="controllerTop">
+				<div id="commandL">
+					<ul id="playBtns">
+						<li id="btnPrev" class="btnPrev0" onclick="javascript:btnClick('btnPrev');"><!-- --></li>
+						<li id="btnPlPu" class="btnPlay0" onclick="javascript:btnClick('btnPlPu');"><!-- --></li>
+						<li id="btnNext" class="btnNext0" onclick="javascript:btnClick('btnNext');"><!-- --></li>
+					</ul>
+					<div id="mainVolControler"><div id="mainVolBar"><div id="mainVolHandel" class="disabled"><!-- --></div></div></div>
+					<span id="lblVolume">Volume</span>
+				</div>
+				<div id="display">
+					<div id="song">&nbsp;</div>
+					<div id="artist">&nbsp;</div>
+					<div id="album">&nbsp;</div>
+				</div>
+				<div id="commandR">
+					<div id="btnList" class="btnList0" onclick="javascript:btnClick('btnList');"><!-- --></div>
+					<div id="search"><form action="#" onsubmit="javascript:searchMusic(true); return false;"><input type="text" name="q" id="q" disabled="disabled" onkeydown="javascript:searchMusic(false);" /></form></div>
+					<span>Search</span>
+				</div>
+			</div>
+			<div id="container">
+				<div id="sideBar">
+					<div id="zoneSelector">
+						<h1>Zones</h1>
+						<div class="scroller">
+							<div id="zones">
+								<h2 class="loading">loading</h2>
+							</div>
+						</div>
+					</div>
+					<div id="volumeWindow" style="display: none;">
+						<h1>Volume Controls</h1>
+						<div class="scroller">
+							<h2 class="loading">loading</h2>
+						</div>
+					</div>
+				</div>
+				<div id="mainWindow">
+					<div id="qiWindow">
+						<div id="queue" onclick="javascript:tableUnselect('fauxTblQueue');">
+							<h1 class="fauxTbl"><span>&nbsp;</span>Current Queue</h1>
+							<div class="scroller">
+								<div class="fauxTbl" id="fauxTblQueue"></div>
+							</div>
+							<div id="queueBottom">
+								<ul id="queueOpt">
+									<li id="btnCler" class="btnCler0" title="Remove all tracks from the queue." onclick="javascript:btnClick('btnCler');"><!-- --></li>
+									<li id="btnSave" class="btnSave0" title="Save the tracks in the queue as a SONOS playlist." onclick="javascript:btnClick('btnSave');"><!-- --></li>
+								</ul>
+							</div>
+						</div>
+						<div id="infoPane">
+							<div id="info">
+								<h1>Information</h1>
+								<div class="scroller">
+									<div id="infoCurrent">
+										<span class="name">Track</span><span id="track" class="content">&nbsp;</span>
+										<span class="name">Length</span><span id="length" class="content">&nbsp;</span>
+									</div>
+									<div id="infoNext">
+										<span class="name">Song</span><span id="nSong" class="content">&nbsp;</span>
+										<span class="name">Artist</span><span id="nArtist" class="content">&nbsp;</span>
+										<span class="name">Album</span><span id="nAlbum" class="content">&nbsp;</span>
+									</div>
+								</div>
+							</div>
+							<div id="albumart"><h1>Album Art</h1><img src="inc/noartwork.png" height="200" /></div>
+						</div>
+					</div>
+					<div id="browser" style="display: none;" onclick="javascript:tableUnselect('fauxTblBrowser');">
+						<h1 class="fauxTbl" id="browserBar"><span class="back0">&nbsp;</span>Music Browser</h1>
+						<div class="scroller">
+							<div class="fauxTbl" id="fauxTblBrowser">
+								<h2 class="loading">loading</h2>
+							</div>
+						</div>
+					</div>
+					<div id="plugins" style="display: none;">
+						<h1 onclick="javascript:frames['pluginFrame'].location.href='plugins.html';">SONOS Web Controller Plugins</h1>
+						<iframe id="pluginFrame" name="pluginFrame" src="plugins.html"></iframe>
+					</div>
+					<div id="initWindow">
+						<h1><!-- --></h1>
+						<div id="initMessage"><h2>Please select a zone to the left to continue</h2></div>
+						<div id="sosume">iSONOS! is an AJAX powered UI to the excellent Sonos Web Controller (<a href="http://www.purple.org/sonos/">www.purple.org/sonos/</a>) and it has been heavily influenced by iTunes. iSONOS! uses some standard widgets found in OS X and iTunes however it is in no way affiliated with either Apple or Sonos, it's just a product of me wanting to learn AJAX and really digging both the Sonos music system and the Apple aesthetic. Please send any questions, comments or suggestions to me at <a href="mailto:isonos@yudev.com">isonos@yudev.com</a>.</div>
+					</div>
+				</div>
+			</div>
+			<div id="controllerBottom">
+				<ul id="optBtns">
+					<li id="btnShuf" class="btnShuf0" onclick="javascript:btnClick('btnShuf');" title="Turn shuffle on or off."><!-- --></li>
+					<li id="btnRept" class="btnRept0" onclick="javascript:btnClick('btnRept');" title="Turn queue repeat on or off."><!-- --></li>
+					<li id="btnVolu" class="btnVolu1" onclick="javascript:btnClick('btnVolu');" title="Open the volume pane to adjust volume of each SONOS Zone."><!-- --></li>
+					<li id="btnPlug" class="btnPlug1" onclick="javascript:btnClick('btnPlug');" title="Browse avaliable SONOS Web Controller plugins."><!-- --></li>
+					<li id="btnRidx" class="btnRidx1" onclick="javascript:btnClick('btnRidx');" title="Manually reindex music library."><!-- --></li>
+					<li id="btnInfo" class="btnInfo2" onclick="javascript:btnClick('btnInfo');" title="About iSONOS!"><!-- --></li>
+				</ul>
+			</div>
+		</div></div></div>
+	</body>
+</html>

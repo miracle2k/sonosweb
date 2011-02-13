@@ -1,0 +1,47 @@
+<HTML>
+    <HEAD>
+        <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+        <TITLE>Sonos Web Control - <TMPL_VAR NAME=VERSION></TITLE>
+    </HEAD>
+    <BODY>
+    <B>UIs:</B>
+    <TABLE COLUMNS=2>
+    <TR><TD><A HREF="/simple/index.html">/simple/index.html</A></TD>
+    <TD>The very first interface. Doesn't use Javascript or anything fancy.</TD></TR>
+
+    <TR><TD><A HREF="/isonos/index.html">/isonos/index.html</A></TD>
+    <TD>Wonderful AJAX interface by Xiao Yu.</TD></TR>
+
+    <TR><TD><A HREF="/simplejs/index.html">/simplejs/index.html</A></TD>
+    <TD>Update of the simple interface using Javascript and AJAX style communication with server.</TD></TR>
+
+    <TR><TD><A HREF="/blue/index.html">/blue/index.html</A></TD>
+    <TD>Version of simplejs with blue buttons and stuff.  Still playing with this.  Not very good yet!</TD></TR>
+
+    <TR><TD><A HREF="/mobile.html">/mobile.html</A></TD>
+    <TD>Simple interface that can be used on a mobile device.</TD></TR>
+
+    <TR><TD><A HREF="/pocketpc.html">/pocketpc.html</A></TD>
+    <TD>Another simple interface that can be used on a mobile device.</TD></TR>
+
+    <TR><TD><A HREF="/nonos/index.html">/nonos/index.html</A></TD>
+    <TD>User contributed interface.</TD></TR>
+
+    <TR><TD><A HREF="/status.html">/status.html</A></TD>
+    <TD>Simple status view.</TD></TR>
+
+    <TR><TD><A HREF="/status.xml">/status.xml</A></TD>
+    <TD>RSS version of the status.html page.</TD></TR>
+    </TABLE>
+    </BODY>
+    <P>
+    <B>PLUGINs:</B>
+    <TABLE COLUMNS=2>
+    <TMPL_LOOP NAME=PLUGIN_LOOP> 
+        <TR><TD><A HREF="<TMPL_VAR NAME=PLUGIN_LINK>"><TMPL_VAR NAME=PLUGIN_LINK></A></TD>
+        <TD><TMPL_VAR NAME=PLUGIN_NAME></TD></TR>
+    </TMPL_LOOP>
+    </TABLE>
+    <HR>
+    <A HREF="http://www.purple.org/sonos">Sonos Web Controller Home Page</A>
+</HTML>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root xmlns="urn:schemas-upnp-org:device-1-0">
+<specVersion>
+<major>1</major>
+<minor>0</minor>
+</specVersion>
+<device>
+<deviceType>urn:schemas-upnp-org:device:TestDevice:1</deviceType>
+<UDN>uuid:Perl-UPnP-Test-Device1</UDN>
+<friendlyName>Perl UPnP Test Device</friendlyName>
+<manufacturer>Your friendly neighborhood Perl developer</manufacturer>
+
+<manufacturerURL>www.cpan.org</manufacturerURL>
+<modelName>PerlUPnP1</modelName>
+<modelNumber>0.01</modelNumber>
+<modelURL>www.cpan.org</modelURL>
+<modelDescription>A device used to test the Perl UPnP implementation.</modelDescription>
+<serialNumber>0100108640-92</serialNumber>
+<UPC>876078133106</UPC>
+<presentationURL>www.cpan.org</presentationURL>
+<serviceList>
+
+<service>
+<serviceType>urn:schemas-upnp-org:service:RenderingControl:1</serviceType>
+<serviceId>urn:upnp-org:serviceId:RenderingControl</serviceId>
+<SCPDURL>/RendererControl.xml</SCPDURL>
+<eventSubURL>/MediaRenderer/RendererControl/Event</eventSubURL>
+<controlURL>/MediaRenderer/RendererControl/Control</controlURL>
+</service>
+</serviceList>
+</device>
+</root>

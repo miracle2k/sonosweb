@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>Sonos MagicSong</title>
+</head>
+<body>
+This plugin allows any web page to be called when a "fake song" is added to the Sonos Queue.  
+The plugin constantly monitors the Queue, and will automatically remove the song from the queue 
+as it performs the action.  For example a fake song could be added to automatically set up links. <p>
+
+<TMPL_UNLESS NAME=MUSICDIR_AVAILABLE>
+<b>The plugin requires you to configure a LOCAL directory that is indexed by the Sonos system.
+For security reasons you must do this by running "sonos.pl -config" from the command line.</b><p>
+
+<TMPL_ELSE>
+<form method="GET" action="/MagicSong/index">
+<table columns=3 border=1>
+<tr><th>Fake Song</th><th>What?</th><th>Actions</th></tr>
+<TMPL_LOOP NAME=MAGICSONG_LOOP> 
+    <tr>
+        <td><TMPL_VAR NAME=MAGICSONG_NAME></td>
+        <td><TMPL_VAR NAME=MAGICSONG_FRIENDLY></td>
+        <td><A HREF="edit.html?magicsongid=<TMPL_VAR NAME=MAGICSONG_ID>">Edit</A> 
+            <A HREF="del?magicsongid=<TMPL_VAR NAME=MAGICSONG_ID>">Delete</A></td>
+    </tr>
+</TMPL_LOOP>
+</table>
+<input type=submit name=New value=New>
+</form>
+</TMPL_UNLESS>
+</body>
+</html>

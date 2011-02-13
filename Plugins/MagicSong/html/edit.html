@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>Sonos MagicSong Edit</title>
+</head>
+<body>
+<TMPL_VAR NAME=MAGICSONG_INFO>
+<form method="GET" action="/MagicSong/edit">
+<table columns=2>
+<tr><td>Artist:</td><td> <input maxlength=30 size=30 type=text name=artist value="<TMPL_VAR NAME=MAGICSONG_ARTIST>"></td></tr>
+<tr><td>Album:</td><td> <input maxlength=30 size=30 type=text name=album value="<TMPL_VAR NAME=MAGICSONG_ALBUM>"></td></tr>
+<tr><td>Song:</td><td> <input maxlength=30 size=30 type=text name=song value="<TMPL_VAR NAME=MAGICSONG_SONG>"></td></tr>
+<tr><td>Command:</td><td><select name=command><TMPL_VAR NAME=MAGICSONG_CMDMENU>
+                      </select></td></tr>
+<tr><td>URL:</td><td> <input maxlength=200 size=80 type=text name=url value="<TMPL_VAR NAME=MAGICSONG_URL>"></td></tr>
+<tr><td></td><td>%zone%, %artist%, %album%, %song%, %curartist%, %curalbum%, %cursong% will be replaced in urls<br>Instead of using %zone% you can also force the action on one zone by using one of the RICON_* values below.</td></tr>
+</table>
+<input type=hidden name=id value=<TMPL_VAR NAME=MAGICSONG_ID>>
+<input type=submit name=Save value=Save>
+<input type=submit name=Cancel value=Cancel>
+</form>
+</body>
+<p>
+<table border=1>
+<tr><th>Zone ID</th><th>Zone Name</th><tr>
+<TMPL_LOOP NAME=ZONES_LOOP> 
+<tr><td><TMPL_VAR NAME=ZONE_ID></td><td><TMPL_VAR NAME=ZONE_NAME></td></tr>
+</TMPL_LOOP>
+</table>
+</html>

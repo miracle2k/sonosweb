@@ -1,0 +1,121 @@
+<HTML>
+<HEAD>
+<TITLE>Sonos PocketPC Control</TITLE>
+</HEAD>
+<BODY>
+
+<table width=100% cellspacing=0 cellpadding=0><tr><td>
+<TMPL_UNLESS NAME=ACTIVE_ZONE> 
+To begin, select a zone:<BR>
+</TMPL_UNLESS> 
+<TMPL_LOOP NAME=ZONES_LOOP> 
+	<TMPL_IF NAME=ZONE_ACTIVE>
+		<A HREF="/pocketpc.html?<TMPL_VAR NAME=ZONE_ARG>"><font size=+1 color=#000000><B><TMPL_VAR NAME=ZONE_NAME></font></B></A>
+	<TMPL_ELSE>
+		<A HREF="/pocketpc.html?<TMPL_VAR NAME=ZONE_ARG>"><font size=-1><TMPL_VAR NAME=ZONE_NAME></font></A>
+	</TMPL_IF>
+</TMPL_LOOP>
+</td><td align=right><font size=-1><A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>">Refresh</A></FONT>
+</td></tr></table>
+<hr>
+<TMPL_IF NAME=ACTIVE_ZONE> 
+
+<table border=0 width=100%  cellspacing=0 cellpadding=0>
+<TMPL_IF NAME=ACTIVE_ISRADIO> 
+<tr><td colspan=2><b>Radio</b></td></tr>
+<tr><td colspan=2><TMPL_VAR NAME=ACTIVE_NAME></td></tr>
+<tr><td colspan=2><TMPL_VAR NAME=ACTIVE_NAME></td></tr>
+<TMPL_VAR NAME=ACTIVE_ARTIST>
+<tr><td colspan=2><font size=-1><i>Listening to: </i></font><TMPL_VAR NAME=ACTIVE_ALBUM></td></tr>
+<TMPL_ELSE>
+<tr>
+<tr><td colspan=2><TMPL_VAR NAME=ACTIVE_NAME></td>
+<td align=center valign=center rowspan=4><a href=pocketpc_now.html?zone=<TMPL_VAR NAME=ACTIVE_ZONEID>><IMG WIDTH=70 HEIGHT=70 SRC="<TMPL_VAR NAME=ACTIVE_ALBUMART>"></a></td>
+</tr>
+<tr><td><font size=-1><i>by</i></font></td><td><TMPL_VAR NAME=ACTIVE_ARTIST></td>
+</tr>
+<tr><td><font size=-1><i>from </i></font></td><td><TMPL_VAR NAME=ACTIVE_ALBUM></td></tr>
+
+<TMPL_IF NAME=ACTIVE_TRACK_TOT_GT_1>
+<tr><td></td><td><font size=-1><i>[track <TMPL_VAR NAME=ACTIVE_TRACK_NUM> of <TMPL_VAR NAME=ACTIVE_TRACK_TOT>]</i></font></td></tr>
+</TMPL_IF>
+</TMPL_IF>
+</table>
+<HR>
+<table width=100% cellspacing=0 cellpadding=0><tr align=center>
+<td><A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>&action=Previous">Prev</A>
+<TMPL_IF NAME=ACTIVE_PLAYING>
+<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>&action=Pause">Pause</A>
+<TMPL_ELSE>
+<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>&action=Play">Play</A>
+</TMPL_IF>
+<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>&action=Next">Next</A>
+<br>
+<TMPL_IF NAME=ACTIVE_SHUFFLE>
+<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>&action=ShuffleOff">Shuffle</A>
+<TMPL_ELSE>
+<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>&action=ShuffleOn">Shuffle-Off</A>
+</TMPL_IF>
+<TMPL_IF NAME=ACTIVE_REPEAT>
+<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>&action=RepeatOff">Rpt</A>
+<TMPL_ELSE>
+<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>&action=RepeatOn">Rpt-Off</A>
+</TMPL_IF>
+</td>
+
+<td>
+<TMPL_IF NAME=ACTIVE_MUTED>
+<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>&action=MuteOff">Mute</A>
+<TMPL_ELSE>
+<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>&action=MuteOn">No-Mute</A>
+</TMPL_IF>
+<br>
+<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>&action=MuchSofter">--</A>
+<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>&action=Softer">-</A>
+<TMPL_VAR NAME=ACTIVE_VOLUME>
+<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>&action=Louder">+</A>
+<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>&action=MuchLouder">++</A>
+</td>
+</tr></table>
+<HR>
+<font size=-1>
+<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>&mpath=R:">Radio</A>
+<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>&mpath=SQ:">Playlists</A>
+<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>&mpath=A:ARTIST">Artists</A>
+<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>&mpath=A:ALBUM">Albums</A>
+<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>&mpath=A:GENRE">Genre</A>
+<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>&mpath=A:COMPOSER">Composers</A>
+<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>&mpath=S:">Folders</A>
+<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>&mpath=AI:">Line In</A>
+<FORM ACTION="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG>" METHOD="get">
+<INPUT NAME=zone VALUE="<TMPL_VAR NAME=ACTIVE_ZONEID>" TYPE=HIDDEN>
+<INPUT NAME=msearch VALUE="<TMPL_VAR NAME=MUSIC_SEARCH>" TYPE=text>
+<INPUT VALUE="Search" TYPE=submit></FORM>
+</font><HR>
+<TMPL_UNLESS NAME=MUSIC_ROOT>
+<B><TMPL_VAR NAME=MUSIC_ERROR></B>
+
+<table border=0 cellspacing=1 cellpadding=0>
+<TMPL_LOOP NAME=MUSIC_LOOP> 
+	<tr>
+	<td><font size=-1>
+<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG><TMPL_VAR NAME=MUSIC_ARG>&action=AddMusic">+</A></font></td>
+	<td><A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG><TMPL_VAR NAME=MUSIC_ARG>&action=PlayMusic"><font size=-1>|&gt;</font></A></td>
+    	<td>
+	<TMPL_IF NAME=MUSIC_ISSONG>
+    		<font size=-1><TMPL_VAR NAME=MUSIC_NAME></font>
+	<TMPL_ELSE>
+		<A HREF="/pocketpc.html?<TMPL_VAR NAME=ALL_ARG><TMPL_VAR NAME=MUSIC_ARG>&action=Browse"><font size=-1><TMPL_VAR NAME=MUSIC_NAME></font></A>
+    	</TMPL_IF>
+	</td>
+	</tr>
+</TMPL_LOOP>
+</table>
+</TMPL_UNLESS>
+</TMPL_IF>
+<a href=/><font size=-1>Home Page</font></A>
+<a href=/AlarmClock/index.html><font size=-1>Alarm Clock</font></A>
+<a href=/Podcasts/index.html><font size=-1>Podcasts</font></A>
+</BODY>
+</HTML>
+

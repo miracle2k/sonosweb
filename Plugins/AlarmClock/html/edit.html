@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>Sonos Alarm Clock Edit</title>
+</head>
+<body>
+
+<TMPL_VAR NAME=ALARMCLOCK_INFO>
+<form method="GET" action="/AlarmClock/edit">
+<table columns=2>
+<tr><td>Current Time:</td><td><TMPL_VAR NAME=ALARMCLOCK_CURTIME></td></tr>
+<tr><td>Name:</td><td><input type=text name=name value="<TMPL_VAR NAME=ALARMCLOCK_NAME>"></td></tr>
+<tr><td>Zone:</td><td><select name=zone><TMPL_VAR NAME=ALARMCLOCK_ZONEMENU>
+                      </select></td></tr>
+<tr><td>Unlink Zone:</td><td><input type=checkbox name=unlink <TMPL_VAR NAME=ALARMCLOCK_UNLINK>> (If the zone is linked, unlink it)</td></tr>
+<tr><td>Time:</td><td><input maxlength=5 size=6 type=text name=time value=<TMPL_VAR NAME=ALARMCLOCK_TIME>> (24hour format)</td></tr>
+<tr><td>Days:</td><td>Su: <input type=checkbox name=sun <TMPL_VAR NAME=ALARMCLOCK_SUN>>
+                      M:  <input type=checkbox name=mon <TMPL_VAR NAME=ALARMCLOCK_MON>>
+                      Tu: <input type=checkbox name=tue <TMPL_VAR NAME=ALARMCLOCK_TUE>>
+                      W:  <input type=checkbox name=wed <TMPL_VAR NAME=ALARMCLOCK_WED>>
+                      Th: <input type=checkbox name=thu <TMPL_VAR NAME=ALARMCLOCK_THU>>
+                      F:  <input type=checkbox name=fri <TMPL_VAR NAME=ALARMCLOCK_FRI>>
+                      Sa: <input type=checkbox name=sat <TMPL_VAR NAME=ALARMCLOCK_SAT>></td></tr>
+<tr><td>Beginning Volume:</td><td><input maxlength=3 size=4 type=text name=bvolume value=<TMPL_VAR NAME=ALARMCLOCK_BVOLUME>> -1 means use current volume, good for going to sleep</td></tr>
+<tr><td>Volume Ramp Time:</td><td><input maxlength=3 size=4 type=text name=tvolume value=<TMPL_VAR NAME=ALARMCLOCK_TVOLUME>> (minutes)</td></tr>
+<tr><td>Ending Volume:</td><td><input maxlength=3 size=4 type=text name=evolume value=<TMPL_VAR NAME=ALARMCLOCK_EVOLUME>></td></tr>
+<tr><td>Play Time:</td><td><input maxlength=3 size=4 type=text name=playtime value=<TMPL_VAR NAME=ALARMCLOCK_PLAYTIME>> (pause after X minutes, 0 means forever)</td></tr>
+<tr><td>Play Mode:</td><td><select name=playmode><TMPL_VAR NAME=ALARMCLOCK_PMMENU>
+                      </select></td></tr>
+<tr><td>Playlist:</td><td><select size=5 name=playlist><TMPL_VAR NAME=ALARMCLOCK_PLMENU>
+                      </select></td></tr>
+<tr><td>Radio:</td><td><select size=5 name=radio><TMPL_VAR NAME=ALARMCLOCK_RMENU>
+                      </select></td></tr>
+<tr><td>Line-In:</td><td><select size=5 name=linein><TMPL_VAR NAME=ALARMCLOCK_LMENU>
+                      </select></td></tr>
+<tr><td>Unmute:</td><td><input type=checkbox name=unmute <TMPL_VAR NAME=ALARMCLOCK_UNMUTE>>(should unmute if muted?)</td></tr>
+</table>
+<input type=hidden name=id value=<TMPL_VAR NAME=ALARMCLOCK_ID>>
+<input type=submit name=Save value=Save>
+<input type=submit name=Cancel value=Cancel>
+</form>
+</body>
+</html>

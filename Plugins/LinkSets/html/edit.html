@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>Sonos Link Set Edit</title>
+</head>
+<body>
+Configure zones to link together.  The Coordinator is the Queue that will be used for the rest of the zones.<P>
+<TMPL_VAR NAME=LINKSETS_INFO>
+<form method="GET" action="/LinkSets/edit">
+Name: <input maxlength=20 size=20 type=text name=name value="<TMPL_VAR NAME=LINKSETS_NAME>"><BR>
+Create Magic Song: 
+<TMPL_IF NAME=MUSICDIR_AVAILABLE>
+  <input type=checkbox name="magicsong" <TMPL_VAR NAME=LINKSETS_MAGICSONG>>
+<TMPL_ELSE>
+  The MagicSong plugin requires "sonos.pl -config" to be run first.
+</TMPL_IF><br>
+<table columns=4>
+<tr>
+    <th>Coordinator</th>
+    <th>Member</th>
+    <th>Name</th>
+    <th>Initial Volume<br>(0 means leave alone)</th>
+    </tr>
+<TMPL_LOOP NAME=LINKSETS_ZONELOOP> 
+<tr>
+    <td><input type=radio name=coordinator value="<TMPL_VAR NAME=LINKSETS_ZONEID>" <TMPL_VAR NAME=LINKSETS_CENABLED>></td>
+    <td><input type=checkbox name="z<TMPL_VAR NAME=LINKSETS_ZONEID>" <TMPL_VAR NAME=LINKSETS_MENABLED>></td>
+    <td><TMPL_VAR NAME=LINKSETS_ZONENAME></td>
+    <td><input maxlength=2 size=3 type=text name="v<TMPL_VAR NAME=LINKSETS_ZONEID>" value="<TMPL_VAR NAME=LINKSETS_VOLUME>"></td>
+</tr>
+</TMPL_LOOP> 
+</table>
+<input type=hidden name=id value=<TMPL_VAR NAME=LINKSETS_ID>>
+<input type=submit name=Save value=Save>
+<input type=submit name=Cancel value=Cancel>
+</form>
+</body>
+</html>

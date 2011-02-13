@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<TITLE>Sonos Web Control - <TMPL_VAR NAME=VERSION></TITLE>
+
+<LINK REL=StyleSheet HREF="style.css" TYPE="text/css" MEDIA=screen>
+<SCRIPT language="JavaScript" SRC="/http.js"></SCRIPT>
+<SCRIPT language="JavaScript" SRC="/sonos.js"></SCRIPT>
+<SCRIPT language="JavaScript" SRC="/sampleapp.js"></SCRIPT>
+<SCRIPT language="JavaScript">
+app.removegif = "smallx.gif";
+app.playgif = "smallplay.gif";
+app.addgif = "smallplus.gif";
+</SCRIPT>
+</HEAD>
+
+
+<BODY onLoad="start()">
+<div id="zonescontainer" style="position: absolute; left: 1px; width: 20%; top: 1px;">
+<B>Zones:</B> 
+<div id="zones"></div>
+</div>
+
+<div id="control" style="position: absolute; left: 20%; width: 33%; top: 1px; height: 200px;">
+<B><label id="currentzonename"></label></B> Now Playing:<BR>
+&nbsp; <B>Song:</B> <label id="song"></label><BR>
+&nbsp; <B>Album:</B> <label id="album"></label><BR>
+&nbsp; <B>Artist:</B> <label id="artist"></label><BR>
+&nbsp; <B>Track:</B> <label id="tracknum"></label>/<label id="tracktot"></label><BR>
+<HR>
+<A HREF="#" id="previous" onClick="doAction('Previous')" ><IMG SRC="prev.gif"></A>
+<A HREF="#" id="play" onClick="doAction('Play');" ><IMG SRC="play.gif"></A>
+<A HREF="#" id="pause" onClick="doAction('Pause');" ><IMG SRC="pause.gif"></A>
+<A HREF="#" id="next" onClick="doAction('Next')" ><IMG SRC="next.gif"></A>
+<A HREF="#" id="shuffleon" onClick="doAction('ShuffleOn')" ><IMG SRC="shuffle.gif"></A>
+<A HREF="#" id="shuffleoff" onClick="doAction('ShuffleOff')" ><IMG SRC="noshuffle.gif"></A>
+<A HREF="#" id="repeaton" onClick="doAction('RepeatOn')" ><IMG SRC="repeat.gif"></A>
+<A HREF="#" id="repeatoff" onClick="doAction('RepeatOff')" ><IMG SRC="norepeat.gif"></A>
+<BR>
+<A HREF="#" id="muteon" onClick="doAction('MuteOn')" ><IMG SRC="muteon.gif"></A>
+<A HREF="#" id="muteoff" onClick="doAction('MuteOff')" ><IMG SRC="muteoff.gif"></A>
+<A HREF="#" id="muchsofter" onClick="doAction('MuchSofter')" ><IMG SRC="voldownlots.gif"></A>
+<A HREF="#" id="softer" onClick="doAction('Softer')" ><IMG SRC="voldown.gif"></A>
+<LABEL id="volume"></LABEL>
+<A HREF="#" id="louder" onClick="doAction('Louder')" ><IMG SRC="volup.gif"></A>
+<A HREF="#" id="muchlouder" onClick="doAction('MuchLouder')" ><IMG SRC="voluplots.gif"></A>
+<BR>
+</div>
+
+<div id="art" style="position: absolute; left: 1px; width: 100px; bottom: 1px;">
+<IMG id="albumart" style="display: none;" HEIGHT=100 WIDTH=100>
+</div>
+
+<div id="queue" style="position: absolute; left: 20%; width: 33%; top: 200px;">
+<B>Queue:</B> <A HREF="#" onClick="doAction('RemoveAll')">Remove All</A><BR>
+<form name="save" action="javascript:doSaveQ();">
+Save Q as:
+<input id="savequeuename" value="" size=16>
+<input value="Save" type=submit>
+</form>
+
+<div id=queuedata>Select a Zone on the left.</div>
+</div>
+
+<div id="music" style="position: absolute; left: 53%; width: 47%; top: 1px;">
+<B>Music:</B> <A HREF="#" onClick="sonos.sendAction(app.currentZoneId, 'ReIndex');">Reindex</A><BR>
+<form name="search" action="javascript:doSearch();">
+Perl Expression:
+<input name=msearch id="msearch" value="" onChange="doSearch(1);" onKeyUp="doSearch(1);">
+<input value="Search" type=submit>
+</form>
+<BR>
+<A HREF="#" onClick="browseTo('')">Top</A> <A HREF="#" onClick="browseBack()">Up</A><BR>
+<B>Location:</B><label id=musicpath></label><BR>
+<div id=rootmusicdata>Loading Music ...</div>
+<div id=musicdata></div>
+<img id="musicalbumart" style="display: none;" onerror="this.style.display='none'" HEIGHT=200 WIDTH=200>
+</div>
+
+</BODY>
+</HTML>

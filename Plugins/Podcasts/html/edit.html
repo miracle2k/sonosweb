@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>Sonos Podcasts Edit</title>
+</head>
+<body>
+<TMPL_VAR NAME=PODCASTS_INFO>
+<form method="GET" action="/Podcasts/edit">
+<table columns=2>
+<tr><td>URL:</td><td> <input size=60 type=text name=url value="<TMPL_VAR NAME=PODCASTS_URL>"></td></tr>
+<tr><td></td><td>Example: http://podcasts.engadget.com/rss.xml</td></tr>
+<tr><td>Auto add to Radio:</td><td><input type=checkbox name=radio <TMPL_VAR NAME=PODCASTS_RENABLED>></td></tr>
+<tr><td>Auto download:</td><td><input type=checkbox name=download <TMPL_VAR NAME=PODCASTS_DENABLED>></td></tr>
+<tr><td>Auto add using MagicSong Plugin:</td><td>
+  <TMPL_IF NAME=MUSICDIR_AVAILABLE>
+  <input type=checkbox name=magicsong <TMPL_VAR NAME=PODCASTS_MENABLED>>
+  <TMPL_ELSE>
+  The MagicSong plugin requires "sonos.pl -config" to be run first.
+  </TMPL_IF>
+  </td></tr>
+<tr><td>MagicSong Artist:</td><td>
+  <TMPL_IF NAME=MUSICDIR_AVAILABLE>
+  <input type=text maxlength=31 size=32 name=magicsongartist value="<TMPL_VAR NAME=PODCASTS_MARTIST>">
+  </TMPL_IF>
+  </td></tr>
+</table>
+<input type=hidden name=id value=<TMPL_VAR NAME=PODCASTS_ID>>
+<input type=submit name=Save value=Save>
+<input type=submit name=Cancel value=Cancel>
+</form>
+</body>
+</html>

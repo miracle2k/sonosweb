@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Sonos Alarm Clock</title>
+</head>
+<body>
+Simple Sonos Multi Alarm Clock<P>
+Current Time: <TMPL_VAR NAME=ALARMCLOCK_CURTIME><P>
+
+<form method="GET" action="/AlarmClock/index">
+<table columns=6>
+<tr><th>Enable?</th><th>Name</th><th>Zone</th><th>Time</th><th>Days</th><th>Actions</th></tr>
+<TMPL_LOOP NAME=ALARMCLOCK_LOOP> 
+    <tr><td><input type=checkbox name="al<TMPL_VAR NAME=ALARMCLOCK_ID>" <TMPL_VAR NAME=ALARMCLOCK_ENABLED>></td>
+        <td><TMPL_VAR NAME=ALARMCLOCK_NAME>
+        <TMPL_IF NAME=ALARMCLOCK_RUNNING>
+        <BR><B>(Running Now)</B>
+        </TMPL_IF>
+        </td>
+        <td><TMPL_VAR NAME=ALARMCLOCK_ZONENAME></td>
+        <td><TMPL_VAR NAME=ALARMCLOCK_TIME></td>
+        <td><TMPL_VAR NAME=ALARMCLOCK_DAYS></td>
+        <td><A HREF="edit.html?alarmclockid=<TMPL_VAR NAME=ALARMCLOCK_ID>">Edit</A> 
+            <A HREF="del?alarmclockid=<TMPL_VAR NAME=ALARMCLOCK_ID>">Delete</A>
+            <TMPL_IF NAME=ALARMCLOCK_RUNNING>
+                <A HREF="stop?alarmclockid=<TMPL_VAR NAME=ALARMCLOCK_ID>">Stop Now</A>
+            <TMPL_ELSE>
+                <A HREF="run?alarmclockid=<TMPL_VAR NAME=ALARMCLOCK_ID>">Run Now</A>
+            </TMPL_IF>
+        </td>
+    </tr>
+</TMPL_LOOP>
+</table>
+<input type=submit name=Update value=Update>
+<input type=submit name=New value=New>
+</form>
+<HR>
+<form method="GET" action="/AlarmClock/sleep">
+<B>Quick Sleep:</B>
+Zone:<select name=zone><TMPL_VAR NAME=ALARMCLOCK_ZONEMENU> </select>
+Minutes:<input maxlength=3 size=4 type=text name=minutes value=15>
+<input type=submit name=Sleep value=Sleep>
+</form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<HTML>
+<HEAD>
+<TITLE>Zones</TITLE>
+</HEAD>
+<BODY>
+<FONT SIZE=0><A TARGET=_top HREF="index.html?<TMPL_VAR NAME=ALL_ARG>">Refresh</A></FONT><P>
+<TMPL_LOOP NAME=ZONES_LOOP> 
+    <TMPL_IF NAME=ZONE_ACTIVE><B></TMPL_IF>
+    <TMPL_IF NAME=ZONE_LINKED>
+       &nbsp; &nbsp;<TMPL_VAR NAME=ZONE_NAME>
+      <A TARGET=_top HREF="index.html?<TMPL_VAR NAME=ALL_ARG>&link=<TMPL_VAR NAME=ACTIVE_ZONEID>&action=Unlink"><font size=-2>[U]</font></a>
+    <TMPL_ELSE>
+       <A TARGET=_top HREF="index.html?<TMPL_VAR NAME=ZONE_ARG>"><TMPL_VAR NAME=ZONE_NAME></A>
+       <TMPL_UNLESS NAME=ZONE_ACTIVE>
+          <A TARGET=_top HREF="index.html?<TMPL_VAR NAME=ALL_ARG>&link=<TMPL_VAR NAME=ACTIVE_ZONEID>&action=Link"><font size=-2>[L]</font></a>
+       </TMPL_UNLESS>
+    </TMPL_IF>
+    <TMPL_IF NAME=ZONE_ACTIVE></B></TMPL_IF>
+    <BR>
+</TMPL_LOOP>
+<P>
+<TMPL_IF NAME=ACTIVE_ZONE>
+    <A TARGET=_top HREF="index.html?zone=<TMPL_VAR NAME=ACTIVE_ZONEID>&action=LinkAll">Party Mode</A>
+<TMPL_ELSE>
+    <B>Select a zone to start</B>
+</TMPL_IF>
+<hr>
+<A TARGET =_top HREF="/">Home Page</A>
+</BODY>
+</HTML>

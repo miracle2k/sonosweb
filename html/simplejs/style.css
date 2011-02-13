@@ -1,0 +1,11 @@
+#pause, #repeatoff, #shuffleoff, #muteoff {
+    display: none;
+}
+
+a.ulink {
+    font-size: x-small;
+}
+
+A IMG {
+    border: 0px;
+}

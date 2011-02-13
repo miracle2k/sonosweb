@@ -1,0 +1,23 @@
+<html>
+<head>
+<title>Sonos Nanny Edit</title>
+</head>
+<body>
+<TMPL_VAR NAME=NANNYS_INFO>
+<form method="GET" action="/Nanny/edit">
+<table>
+<tr><td> Name:</td><td> <input maxlength=20 size=20 type=text name=name value="<TMPL_VAR NAME=NANNYS_NAME>"></td></tr>
+<tr><td> Min Volume:</td><td> <input maxlength=3 size=4 type=text name=minvolume value="<TMPL_VAR NAME=NANNYS_MINVOLUME>"></td></tr>
+<tr><td> Max Volume:</td><td> <input maxlength=3 size=4 type=text name=maxvolume value="<TMPL_VAR NAME=NANNYS_MAXVOLUME>"></td></tr>
+<tr><td> Can Link:</td><td> <input type=checkbox name=canlink <TMPL_VAR NAME=NANNYS_CANLINK>></td></tr>
+<tr><td>Current Time:</td><td><TMPL_VAR NAME=NANNYS_CURTIME></td></tr>
+<tr><td>Start Time:</td><td><input maxlength=5 size=6 type=text name=starttime value=<TMPL_VAR NAME=NANNYS_STARTTIME>> (24hour format)</td></tr>
+<tr><td>Stop Time:<br>&nbsp;</td><td><input maxlength=5 size=6 type=text name=stoptime value=<TMPL_VAR NAME=NANNYS_STOPTIME>> (24hour format)<br>Set stop &amp; start time the same for all day; if start is later then stop, pass thru midnight.</td></tr>
+</table>
+<input type=hidden name=id value=<TMPL_VAR NAME=NANNYS_ID>>
+<input type=submit name=Save value=Save>
+<input type=submit name=Cancel value=Cancel>
+</form>
+</body>
+</html>
+

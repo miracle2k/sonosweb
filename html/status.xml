@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<rss version="2.0">
+     <channel>
+     <title>Sonos Status</title>
+     <link><TMPL_VAR NAME=BASE_URL></link>
+     <description>Sonos RSS Status</description>
+
+<TMPL_LOOP NAME=ZONES_LOOP> 
+      <item>
+           <title><TMPL_VAR NAME=ZONE_NAME></title>
+           <description>
+
+            &lt;B&gt;Song:&lt;/B&gt; <TMPL_VAR NAME=ACTIVE_NAME>&lt;BR&gt;
+            <TMPL_IF NAME=ACTIVE_ISRADIO> 
+            &lt;B&gt;Station:&lt;/B&gt; <TMPL_VAR NAME=ACTIVE_ALBUM>&lt;BR&gt;
+            <TMPL_ELSE>
+            &lt;B&gt;Artist:&lt;/B&gt; <TMPL_VAR NAME=ACTIVE_ARTIST>&lt;BR&gt;
+            &lt;B&gt;Album:&lt;/B&gt; <TMPL_VAR NAME=ACTIVE_ALBUM>&lt;BR&gt;
+            &lt;B&gt;Track:&lt;/B&gt; <TMPL_VAR NAME=ACTIVE_TRACK_NUM>/<TMPL_VAR NAME=ACTIVE_TRACK_TOT>&lt;BR&gt;
+            </TMPL_IF>
+            &lt;B&gt; Vol:&lt;/B&gt; <TMPL_VAR NAME=ACTIVE_VOLUME>
+           </description>
+           <link><TMPL_VAR NAME=BASE_URL>/index.html?<TMPL_VAR NAME=ZONE_ARG></link>
+      </item>
+</TMPL_LOOP>
+     </channel>
+</rss>

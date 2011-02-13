@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<title>iSONOS! Plugins</title>
+		<style type="text/css" media="all">
+			body { background: url("inc/sonosbg.jpg") center top no-repeat #fff; margin-top: 60px; font: 75% Verdana, Arial, Helvetica, sans-serif; }
+			p {padding-left:4em; margin-top:0;}
+			h2 {padding: 0; margin-bottom: 0;}
+		</style>
+	</head>
+	<body>
+		<TMPL_LOOP NAME=PLUGIN_LOOP> 
+		<h2><a href="<TMPL_VAR NAME=PLUGIN_LINK>"><TMPL_VAR NAME=PLUGIN_LINK></a></h2>
+		<p><TMPL_VAR NAME=PLUGIN_NAME></p>
+		</TMPL_LOOP>
+	</body>
+</html>

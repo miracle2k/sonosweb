@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Sonos AIM Help</title>
+</head>
+<body>
+
+To save typing the Bot will try and guess both commands and zones from short hand.<br>
+For example, a zone named "Kitchen" can be refered to using just "kit" or "kitch".<br>
+Or the command "zone" can be shortened to just "z"
+<p>
+
+
+<b>These commands require a zone to be selected first</b>
+<table border=1>
+<tr><th>Command</th><th>Syntax</th><th>Sample</th></tr>
+<tr><td>Zone</td><td>zone {zone}</td><td>z kitch</td></tr>
+<tr><td>Search</td><td>search {regex}</td><td>search house</td></tr>
+<tr><td>Enqueue</td><td>queue {id} [{id2} [...]]</td><td>q 1 2 3</td></tr>
+<tr><td>Play a song</td><td>play {id} [{id2} [...]]</td><td>pl 4 5 6</td></tr>
+<tr><td>Set Volume</td><td>volume {raw}<br>v +{increase}<br>v -{decrease}</td><td>v 30<br>v +5<br>v -10</td></tr>
+<tr><td>Next Song</td><td>next</td><td>next</td></tr>
+<tr><td>Previous Song</td><td>previous</td><td>prev</td></tr>
+<tr><td>Stop</td><td>stop</td><td>stop</td></tr>
+<tr><td>Pause</td><td>pause</td><td>pause</td></tr>
+<tr><td>Play</td><td>play</td><td>play</td></tr>
+<tr><td>Mute</td><td>mute {on|off}</td><td>mute on</td></tr>
+<tr><td>Repeat</td><td>repeat {on|off}</td><td>repeat off</td></tr>
+<tr><td>Shuffle</td><td>shuffle {on|off}</td><td>shuffle off</td></tr>
+<tr><td>Select Line-In</td><td>linein {name}</td><td>linein cd</td></tr>
+<tr><td>Select Radio</td><td>radio {station regex}</td><td>radio cd</td></tr>
+<tr><td>Info on zone</td><td>info</td><td>info</td></tr>
+</table>
+
+<p>
+<b>These commands can be used at any time</b>
+<table border=1>
+<tr><th>Command</th><th>Syntax</th><th>Sample</th></tr>
+<tr><td>Link Zones</td><td>link {coordinator} {zone1} [{zone2} [...] </td><td>link fam kitch</td></tr>
+<tr><td>UnLink Zones</td><td>unlink {zone1} [{zone2} [...]]</td><td>unlink kitch</td></tr>
+<tr><td>Current State</td><td>current</td><td>cur</td></tr>
+</table>
+
+</body>
+</html>

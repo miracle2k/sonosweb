@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+<meta http-equiv="refresh" content="5;URL=control.html?<TMPL_VAR NAME=ALL_ARG>">
+<TITLE>Control</TITLE>
+</HEAD>
+<BODY>
+
+<TMPL_VAR NAME=ACTIVE_ZONE> Now Playing: <FONT SIZE=0><A TARGET=control HREF="control.html?<TMPL_VAR NAME=ALL_ARG>">Refresh</A></FONT><BR>
+
+&nbsp; <B>Song:</B> <TMPL_VAR NAME=ACTIVE_NAME><BR>
+<TMPL_IF NAME=ACTIVE_ISRADIO> 
+&nbsp; <B>Station:</B> <TMPL_VAR NAME=ACTIVE_ALBUM><BR>
+<TMPL_ELSE>
+&nbsp; <B>Artist:</B> <TMPL_VAR NAME=ACTIVE_ARTIST><BR>
+&nbsp; <B>Album:</B> <TMPL_VAR NAME=ACTIVE_ALBUM><BR>
+&nbsp; <B>Track:</B> <TMPL_VAR NAME=ACTIVE_TRACK_NUM>/<TMPL_VAR NAME=ACTIVE_TRACK_TOT><BR>
+<TMPL_IF NAME=ACTIVE_ALBUMART> 
+<IMG WIDTH=50 HEIGHT=50 SRC="<TMPL_VAR NAME=ACTIVE_ALBUMART>"><BR>
+</TMPL_IF>
+</TMPL_IF>
+
+<HR>
+
+<A TARGET=middle HREF="middle.html?<TMPL_VAR NAME=ALL_ARG>&action=Previous">Previous</A>
+<TMPL_IF NAME=ACTIVE_PLAYING>
+<A TARGET=middle HREF="middle.html?<TMPL_VAR NAME=ALL_ARG>&action=Pause">Pause</A>
+<TMPL_ELSE>
+<A TARGET=middle HREF="middle.html?<TMPL_VAR NAME=ALL_ARG>&action=Play">Play</A>
+</TMPL_IF>
+<A TARGET=middle HREF="middle.html?<TMPL_VAR NAME=ALL_ARG>&action=Next">Next</A>
+<BR>
+<TMPL_IF NAME=ACTIVE_SHUFFLE>
+<A TARGET=control HREF="control.html?<TMPL_VAR NAME=ALL_ARG>&action=ShuffleOff">Shuffle Off</A>
+<TMPL_ELSE>
+<A TARGET=control HREF="control.html?<TMPL_VAR NAME=ALL_ARG>&action=ShuffleOn">Shuffle On</A>
+</TMPL_IF>
+<TMPL_IF NAME=ACTIVE_REPEAT>
+<A TARGET=control HREF="control.html?<TMPL_VAR NAME=ALL_ARG>&action=RepeatOff">Repeat Off</A>
+<TMPL_ELSE>
+<A TARGET=control HREF="control.html?<TMPL_VAR NAME=ALL_ARG>&action=RepeatOn">Repeat On</A>
+</TMPL_IF>
+<BR>
+<TMPL_IF NAME=ACTIVE_MUTED>
+<A TARGET=control HREF="control.html?<TMPL_VAR NAME=ALL_ARG>&action=MuteOff">Mute Off</A>
+<TMPL_ELSE>
+<A TARGET=control HREF="control.html?<TMPL_VAR NAME=ALL_ARG>&action=MuteOn">Mute On</A>
+</TMPL_IF>
+<A TARGET=control HREF="control.html?<TMPL_VAR NAME=ALL_ARG>&action=MuchSofter">--</A>
+<A TARGET=control HREF="control.html?<TMPL_VAR NAME=ALL_ARG>&action=Softer">-</A>
+<TMPL_VAR NAME=ACTIVE_VOLUME>
+<A TARGET=control HREF="control.html?<TMPL_VAR NAME=ALL_ARG>&action=Louder">+</A>
+<A TARGET=control HREF="control.html?<TMPL_VAR NAME=ALL_ARG>&action=MuchLouder">++</A>
+
+</BODY>
+</HTML>

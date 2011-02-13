@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<TITLE>SONOS Zones Status</TITLE>
+</HEAD>
+<BODY>
+<TABLE BORDER=1>
+<TR><TD COLSPAN=2 ALIGN=CENTER><B>SONOS  Zone Status</B></TD></TR>
+<TR></TR>
+<TR></TR>
+<TR></TR>
+<TR></TR>
+
+<TMPL_LOOP NAME=ZONES_LOOP> 
+<TR>
+<TD ALIGN=CENTER><B><TMPL_VAR NAME=ZONE_NAME></B><BR>
+<TMPL_IF NAME=ACTIVE_PLAYING>(Playing)</TMPL_IF>
+<TMPL_IF NAME=ACTIVE_PAUSED>(Paused)</TMPL_IF>
+<TMPL_IF NAME=ACTIVE_STOPPED>(Paused)</TMPL_IF>
+<TMPL_IF NAME=ACTIVE_ISRADIO> 
+	<BR>Internet Radio<BR>
+<TMPL_ELSE>
+	<BR><TMPL_VAR NAME=ACTIVE_TRACK_NUM> of <TMPL_VAR NAME=ACTIVE_TRACK_TOT><BR>
+<TMPL_IF NAME=ACTIVE_SHUFFLE>(Rnd)</TMPL_IF>
+<TMPL_IF NAME=ACTIVE_REPEAT>(Rpt)</TMPL_IF>
+</TMPL_IF>
+<br>Vol.<TMPL_VAR NAME=ACTIVE_VOLUME>
+</TD>
+
+
+
+<TMPL_IF NAME=ACTIVE_ISRADIO> 
+	<td><Table>
+	<TD><font size = 1>Information:</font><br>
+	<TMPL_VAR NAME=ACTIVE_NAME><BR>
+	<font size = 1>Station:</font><br>
+	<TMPL_VAR NAME=ACTIVE_ALBUM></TD>
+	</Table>
+<TMPL_ELSE>
+	<TD>
+	<Table>
+	<tr><td><font size = 1>Track:</font></td>
+	<td><TMPL_VAR NAME=ACTIVE_NAME></td></tr>
+	<tr><td><font size = 1>Artist:</font></td>
+	<td><TMPL_VAR NAME=ACTIVE_ARTIST></td></tr>
+	<tr><td><font size = 1>Album:</font></td>
+	<td><TMPL_VAR NAME=ACTIVE_ALBUM></td></tr>
+	<TMPL_IF NAME=NEXT_NAME>
+		<tr><td></td></tr>
+		<tr><td colspan=2><font size = 1>Next: </font><br>
+		<TMPL_VAR NAME=NEXT_NAME> - <TMPL_VAR NAME=NEXT_ARTIST></td></tr>
+	</TMPL_IF>
+        </table>
+	</TD>
+</TMPL_IF>
+</TR>
+
+<TR></TR>
+<TR></TR>
+<TR></TR>
+<TR></TR>
+</TMPL_LOOP>
+
+</TABLE>
+</BODY>
+</HTML>
+

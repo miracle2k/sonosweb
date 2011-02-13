@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>Sonos Last.FM</title>
+</head>
+<body>
+For more information about Last.FM visit <A HREF="http://www.last.fm">Last.FM home page</A>.
+To listen to your Last.FM radio stations read <A HREF="http://forums.sonos.com/showthread.php?t=2167">Sonos Forum Post</A>,
+someday I hope to integrate this.
+<P>
+Currently each Last.FM account can either have a single zone or all zones assigned to it at one time.  Someday I make it so you can pick and choose what zones are assigned to which account.  Only single zones or multizone coordinators can be selected.  Remember to hit Update after changing account to zone mapping.
+<P>
+<TMPL_VAR NAME=LASTFM_ERR> 
+<form method="GET" action="/LastFM/index">
+<table columns=3>
+<tr><th>User</th><th>Zone</th><th>Action</th></tr>
+<TMPL_LOOP NAME=LASTFM_LOOP> 
+    <tr><td><TMPL_VAR NAME=LASTFM_USER></td>
+    <td><select name="<TMPL_VAR NAME=LASTFM_USER>"><TMPL_VAR NAME=LASTFM_ZONEMENU></select></td>
+    <td><A HREF="/LastFM/index?del=1&user=<TMPL_VAR NAME=LASTFM_USER ESCAPE=URL>">Delete</A></td></tr>
+</TMPL_LOOP> 
+</table>
+<input type=submit name=Update value=Update>
+</form>
+<HR>
+<form method="GET" action="/LastFM/index">
+Add a new account.  To create a new account first visit <A HREF="http://www.last.fm">Last.FM home page</A> <P>
+<input type=text name=user size=16> <input type=password name=password size=16>
+<input type=submit name=add value="Add Account">
+</form>
+</body>
+</html>

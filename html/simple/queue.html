@@ -1,0 +1,30 @@
+<HTML>
+<HEAD>
+<TITLE>Playlist</TITLE>
+</HEAD>
+<BODY>
+
+<TMPL_IF NAME=ACTIVE_ZONE_IMG><IMG SRC="<TMPL_VAR NAME=ACTIVE_ZONE_IMG>"> </TMPL_IF>
+<TMPL_VAR NAME=ACTIVE_ZONE> Queue:  <A TARGET=queue HREF="queue.html?<TMPL_VAR NAME=ALL_ARG>&action=RemoveAll">Remove All</A>
+<FONT SIZE=0><A TARGET=queue HREF="queue.html?<TMPL_VAR NAME=ALL_ARG>">Refresh</A></FONT>
+<BR>
+<FORM ACTION="queue.html" METHOD="get">
+Save Q as:
+<INPUT NAME=savename VALUE="">
+<INPUT NAME=action VALUE="Save" TYPE=HIDDEN>
+<INPUT NAME=zone VALUE="<TMPL_VAR NAME=ACTIVE_ZONEID>" TYPE=HIDDEN>
+<INPUT VALUE="Save" TYPE=submit>
+</FORM>
+<HR>
+<TMPL_LOOP NAME=QUEUE_LOOP> 
+    <IMG SRC="<TMPL_VAR NAME=QUEUE_IMG>">
+    <A TARGET=middle HREF="middle.html?<TMPL_VAR NAME=QUEUE_ARG>&action=Remove"><IMG BORDER=0 SRC=/x.gif></A>
+    <A TARGET=middle HREF="middle.html?<TMPL_VAR NAME=QUEUE_ARG>&action=Seek"><TMPL_VAR NAME=QUEUE_NAME></A>
+    <BR>
+</TMPL_LOOP>
+</BODY>
+</HTML>
+
+
+</BODY>
+</HTML>

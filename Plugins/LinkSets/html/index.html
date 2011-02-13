@@ -1,0 +1,22 @@
+<html>
+<head>
+<title>Sonos Link Sets</title>
+</head>
+<body>
+This plugin makes it easy to switch which zones are linked together, by creating one click linked zone sets.<P>
+
+<form method="GET" action="/LinkSets/index">
+<table columns=4 border=1>
+<tr><th>Name</th><th>Coordinator</th><th>Zones</th><th>Actions</th></tr>
+<TMPL_LOOP NAME=LINKSETS_LOOP> 
+        <td><A HREF="go?linksetid=<TMPL_VAR NAME=LINKSETS_ID>"><TMPL_VAR NAME=LINKSETS_NAME></A></td>
+        <td><TMPL_VAR NAME=LINKSETS_ZONEC></td>
+        <td><TMPL_VAR NAME=LINKSETS_ZONES></td>
+        <td><A HREF="edit.html?linksetid=<TMPL_VAR NAME=LINKSETS_ID>">Edit</A> 
+            <A HREF="del?linksetid=<TMPL_VAR NAME=LINKSETS_ID>">Delete</A></td>
+    </tr>
+</TMPL_LOOP>
+</table>
+<input type=submit name=New value=New>
+</form>
+</html>

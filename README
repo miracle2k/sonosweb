@@ -1,0 +1,110 @@
+Web Sonos Controller version 0.72
+=================================
+
+Web Sonos Controller is a very simple controller
+for the Sonos (http://www.sonos.com) Music System,
+although it might work with any UPnP Music System.
+
+Currently it supports:
+* All Control functions: Play, Pause, Next, Previous
+* All Volume functions: Mute, Louder, Softer
+* Adding/Removing items to the queue
+* Creating, Deleting, Using saved Playlists 
+* Selecting Radio Station
+* Simple plugins
+
+HOW TO USE
+==========
+
+* Run sonos.pl from the sonos directory.
+* Point your web browser to 
+  - "http://localhost:8001/" to select interface and plugins
+* Point your RSS reader to 
+  - "http://localhost:8001/status.xml" for a simple summary of the zones
+* When using the first time, you will have to wait a few minutes for
+  an index to be built.  The index is done building when the
+  output says it has saved the Music DB
+* Click on a Zone
+* Click on the other links! :-)
+
+* If you want to try with Konfabulator see the html/iSonosStub.js file for directions
+
+You must have perl installed and all the dependencies listed below.
+
+sonos.pl will create a web server that listens to port 8001,
+although that can be changed at the top of sonos.pl.
+
+All the web pages are in the the html directory, and can
+be edited freely.  A very simple template system is used
+to build everything.
+
+
+DEPENDENCIES
+============
+I suggest you using the ActiveState Perl install, see below,
+unless you are using Linux.
+
+This program requires at least these other modules and libraries:
+Many Linux distributions already come with SOME of them.
+
+UPnP              - Included since patch required. No need to install.
+Data::Dumper      perl -MCPAN -e "install Data::Dumper"
+SOAP::Lite        perl -MCPAN -e "install SOAP::Lite"
+LWP::UserAgent    perl -MCPAN -e "install LWP::UserAgent"
+HTTP::Daemon      perl -MCPAN -e "install HTTP::Daemon"
+XML::Simple       perl -MCPAN -e "install XML::Simple"
+HTML::Template    perl -MCPAN -e "install HTML::Template"
+
+WHY IS UPNP INCLUDED
+====================
+
+There are at least 4 changes I had to make to get it to work with the Sonos system,
+I'm not sure if this is Sonos or UPnP lib issue.  Since it is included,
+there is no need to install it.
+
+SUPPORT
+=======
+
+First check for a new version at http://www.purple.org/sonos
+
+Feel free to send mail to sonos@purple.org, and I will try to help out.
+If enough people are interested we can move it to SourceForge.
+
+Patches will get a better response then a feature request. :-)
+
+For error reports, please include the output with the -debug option,
+so run something like "sonos.pl -debug > output.txt"
+
+Easy instructions for Windows and OS X
+======================================
+*  Goto <A HREF="http://www.activestate.com/Products/ActivePerl/">http://www.activestate.com/Products/ActivePerl/</A>
+*  Download ActivePerl (click the Free Download link and follow instructions)
+*  Install ActivePerl following their instructions
+*  Windows:
+   *  Open a new shell (Start Menu -> Run -> "cmd")
+   *  In the shell run the "ppm" command
+   *  At the ppm command prompt type "install HTML-Template"
+   *  Once it has finished type "quit"
+   *  Change into the sonos directory
+   *  Type "perl sonos.pl" 
+*  OS X:
+   *  Open a new terminal window 
+   *  At the prompt run the "/usr/local/ActivePerl-5.8/bin/ppm" command
+   *  At the ppm command prompt type "install HTML-Template"
+   *  Once it has finished type "quit"
+   *  Change into the sonos directory
+   *  Type "/usr/local/ActivePerl-5.8/bin/perl sonos.pl" 
+*  Now using a browser on the same machine, goto http://localhost:8001
+*  All done - Please let me know if this works/doesn't work for you.
+
+
+COPYRIGHT AND LICENCE
+=====================
+
+Copyright (C) 2006 by Andy Wick
+
+This program is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.8 or,
+at your option, any later version of Perl 5 you may have available.
+
+

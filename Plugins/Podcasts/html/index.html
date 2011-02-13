@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>Sonos Podcasts</title>
+</head>
+<body>
+<TMPL_VAR name="PODCASTS_ERR">
+<form method="GET" action="index">
+<input type=submit name=New value="New Podcast"> <BR>
+<a href="index?refresh=1&zone=<TMPL_VAR name=ACTIVE_ZONEID>">Refresh Data</a><BR>
+Select a zone to play directly: <select name=zone><TMPL_VAR NAME=PODCASTS_ZONEMENU></select>
+<input type=submit name="1" value="Select">
+</form>
+
+<table columns=3 border=1>
+<tr><th>Name</th><th>Description</th><th>Actions</th></tr>
+<TMPL_LOOP NAME=PODCASTS_LOOP> 
+    <tr><td><B><TMPL_VAR name=PODCASTS_NAME><B></td>
+        <td><B><TMPL_VAR name=PODCASTS_DESC></B></td>
+        <td><B><a href="index?podcastdel=<TMPL_VAR name=PODCASTS_ID>">Delete</a>
+        <a href="edit.html?podcastid=<TMPL_VAR name=PODCASTS_ID>">Edit</a>
+        <TMPL_IF name=PODCASTS_EXPANDED><a href="index?podcastcollapse=<TMPL_VAR name=PODCASTS_ID>">Collapse</a>
+        <TMPL_ELSE><a href="index?podcastexpand=<TMPL_VAR name=PODCASTS_ID>">Expand</a>
+        </TMPL_IF>
+        </B></td></tr>
+
+    <TMPL_IF name=PODCASTS_EXPANDED>
+    <TMPL_LOOP NAME=PODCASTS_ITEM_LOOP> 
+        <tr><td><TMPL_VAR name=ITEM_NAME></td>
+            <td><TMPL_VAR name=ITEM_DESC></td>
+            <td><a href="index?zone=<TMPL_VAR name=ITEM_ZONE>&podcastplay=<TMPL_VAR name=ITEM_URL>">Play</a> &nbsp;
+                <a href="index?zone=<TMPL_VAR name=ITEM_ZONE>&podcastadd=<TMPL_VAR name=ITEM_URL>">Add</a></td></tr>
+    </TMPL_LOOP>
+    </TMPL_IF>
+</TMPL_LOOP>
+</table>
+</body>
+</html>

@@ -1,0 +1,10 @@
+Makefile.PL
+MANIFEST
+README
+t/01-ControlPoint-Module.t
+t/02-ControlPoint-Protocol.t
+t/03-DeviceManager-Module.t
+t/04-DeviceManager-Protocol.t
+lib/UPnP/DeviceManager.pm
+lib/UPnP/ControlPoint.pm
+lib/UPnP/Common.pm

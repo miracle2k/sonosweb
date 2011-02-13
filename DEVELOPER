@@ -1,0 +1,91 @@
+First attempt of a document for all the variables for use in a html file
+
+* Music Related:
+MUSIC_ERROR            Error/Warning about music results
+MUSIC_SEARCH           What was searched for
+MUSIC_UPDATED          Updated compared to the lastupdate parameter
+MUSIC_LASTUPDATE       When the last update was
+MUSIC_PATH             Path to the container of the results
+MUSIC_LOOP             Loop through the music results
+                       If a msearch parameter is present, use that to determine results
+                       If a mpath parameter is present, use that to determine results
+                       Otherwise return root
+
+  MUSIC_NAME           Name of item
+  MUSIC_PATH           Path to the item
+  MUSIC_ISSONG         Is this a song or a container
+  MUSIC_ARG            Full html arg to container
+
+
+* Queue Related:
+ALL_QUEUE_LOOP         Loop through all the Queues
+  QUEUE_ZONE           Name of the Zone
+  QUEUE_ZONEID         ID of the Zone
+  QUEUE_LASTUPDATE     Last Upate of the ID
+  QUEUE_UPDATED        Is this queue updated compared to the lastupdate paramater
+  QUEUE_LOOP           Loop of items for the zone
+    QUEUE_IMG          playing or paused
+    QUEUE_NAME         Title of Item
+    QUEUE_ID           id of item
+    QUEUE_ARG          full html arg to deal with item
+
+If a zone parameter is present, this is for that zone:
+QUEUE_ZONE           Name of the Zone
+QUEUE_ZONEID         ID of the Zone
+QUEUE_LASTUPDATE     Last Upate of the ID
+QUEUE_UPDATED        Is this queue updated compared to the lastupdate paramater
+QUEUE_LOOP           Loop of items for the zone
+  QUEUE_IMG          playing or paused
+  QUEUE_NAME         Title of Item
+  QUEUE_ID           id of item
+  QUEUE_ARG          full html arg to deal with item
+
+* Plugin Related:
+PLUGIN_LOOP
+  PLUGIN_LINK        html url to the plugin root
+  PLUGIN_NAME        Name of the plugin
+
+* Zone Related:
+ZONES_UPDATED
+ZONES_LOOP
+  ZONE_ACTIVE  
+  ZONE_NAME
+  ZONE_ARG
+  ZONE_LINKED
+  ZONE_LINK
+  ZONE_LINK_NAME
+
+  ACTIVE_ZONE
+  ACTIVE_ZONEID
+  ACTIVE_VOLUME
+  ACTIVE_LASTUPDATE
+  ACTIVE_UPDATED
+  ACTIVE_MUTED
+  ACTIVE_NAME
+  ACTIVE_ARTIST
+  ACTIVE_ALBUM
+  ACTIVE_ISSONG
+  ACTIVE_ISRADIO
+  ACTIVE_TRACK_NUM
+  ACTIVE_TRACK_TOT
+  ACTIVE_MODE
+  ACTIVE_PAUSED
+  ACTIVE_STOPPED
+  ACTIVE_PLAYING
+  ACTIVE_SHUFFLE
+  ACTIVE_REPEAT
+  ACTIVE_POSITION
+  ACTIVE_LENGTH
+  ACTIVE_ALBUMART
+  ACTIVE_CONTENT
+  NEXT_NAME
+  NEXT_ARTIST
+  NEXT_ALBUM
+  NEXT_ISSONG
+
+If a zone parameter is present, this is for that zone:
+
+* Other:
+VERSION              Version of sonos.pl
+LAST_UPDATE          Last update of any of the data
+BASE_URL             Base URL of the sonos web controller

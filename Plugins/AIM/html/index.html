@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>Sonos AIM</title>
+</head>
+<body>
+This plugin allows you to interact with your Sonos Zones by sending instant messages from AIM.  
+It will login an AIM user that represents the Sonos Zones.  
+(A screen name just for this purpose works best.)
+Then configured names can send ims to the Sonos screen name to control the systems.
+<TMPL_IF NAME=AIM_NETOSCAR>
+<ul>
+<li> Add names to the Allowed AIM Names list.  These are the users who can control the AIM bot and send commands.  All other ims and users will be logged and ignored.
+<li> Enter the AIM name and password for the Bot
+<li> Check the enable checkbox
+<li> Enable the zones that can be controlled
+<li> Remember to hit the Save button.
+</ul>
+
+<P>
+
+
+<form method="GET" action="/AIM/index">
+<table columns=2 border=1>
+<tr><td>AIM Name:</td><td><input type=text name=name size=16 maxlength=32 value="<TMPL_VAR NAME=AIM_NAME>"></td></tr>
+<tr><td>AIM Password:</td><td><input type=password name=password size=16 value="<TMPL_VAR NAME=AIM_PASSWORD>"></td></tr>
+<tr></tr>
+<tr><td>Enable</td><td><input type=checkbox name=enabled <TMPL_VAR NAME=AIM_ENABLED>>
+<tr><td>Allowed AIM Names:</td><td><select size=5 name=names><TMPL_VAR NAME=AIM_NAMES>
+                          </select> <input type=submit name=Del value=Del></td></tr>
+<tr><td></td><td><input type=text name=newname size=16 maxlength=32> <input type=submit name=Add value=Add></td></tr>
+<tr><td>Allowed Zones:</td><td><TMPL_VAR NAME=AIM_ZONES></td></tr>
+
+</table>
+<input type=submit name=Save value=Save>
+</form>
+
+<TMPL_ELSE>
+<p>
+<b>The Net::OSCAR perl module wasn't found and needs to be installed.</b>
+<P>
+If using Active State Perl
+<ol>
+<li>Run: <b>ppm</b>
+<li>At the ppm prompt type: <b>install net-oscar</b>
+</ol>
+If using pre installed Perl, such as a Linux OS.
+<ol>
+<li> Open a window and su to root
+<li> Run: <b>perl -MCPAN -e"install Net::OSCAR"</b>
+</ol>
+<p>
+Restart the Sonos Web Controller
+</TMPL_IF>
+</html>

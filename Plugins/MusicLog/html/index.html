@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>Sonos Music Log</title>
+</head>
+<body>
+Silly Music Log.  Saves all the songs played, and when to a music.log file for the zones that are enabled.<P>
+
+<form method="GET" action="/MusicLog/index">
+<table columns=2>
+<tr><th>Enable?</th><th>Zone</th></tr>
+<TMPL_LOOP NAME=MUSICLOG_LOOP> 
+    <tr><td><input type=checkbox name="<TMPL_VAR NAME=MUSICLOG_ZONE>" <TMPL_VAR NAME=MUSICLOG_ENABLED>></td>
+        <td><TMPL_VAR NAME=MUSICLOG_NAME></td>
+    </tr>
+</TMPL_LOOP>
+</table>
+<input type=submit name=Update value=Update>
+</form>
+</html>

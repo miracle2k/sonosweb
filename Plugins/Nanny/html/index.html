@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>Sonos Nanny Configuration</title>
+</head>
+<body>
+This plugin makes it possible to monitor zones and set up rules for how the zones are allowed
+to behave.  For example min/max volume levels.
+<p>
+
+<form method="GET" action="/Nanny/index">
+<table columns=3 border=1>
+<tr><th>Name</th><th>Zones</th><th>Actions</th></tr>
+<TMPL_LOOP NAME=NANNYS_LOOP> 
+        <td><A HREF="edit.html?nannyid=<TMPL_VAR NAME=NANNYS_ID>"><TMPL_VAR NAME=NANNYS_NAME></A></td>
+        <td><TMPL_VAR NAME=NANNYS_ZONES></td>
+        <td><A HREF="edit.html?nannyid=<TMPL_VAR NAME=NANNYS_ID>">Edit</A> 
+            <A HREF="del?nannyid=<TMPL_VAR NAME=NANNYS_ID>">Delete</A></td>
+    </tr>
+</TMPL_LOOP>
+</table>
+<p>
+Please use the Update button after enabling, disabling zones.<br>
+<input type=submit name=Update value=Update>
+<input type=submit name=New value=New>
+</form>
+</html>

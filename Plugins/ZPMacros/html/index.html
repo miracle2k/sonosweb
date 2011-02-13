@@ -1,0 +1,23 @@
+<html>
+<head>
+<title>Sonos ZPMacros</title>
+</head>
+<body>
+This plugin allows any web page to be called based on a series of button presses in a short period of time.
+
+<form method="GET" action="/ZPMacros/index">
+<table columns=3 border=1>
+<tr><th>Button Presses</th><th>What?</th><th>Actions</th></tr>
+<TMPL_LOOP NAME=ZPMACROS_LOOP> 
+    <tr>
+        <td><TMPL_VAR NAME=ZPMACROS_BUTTONS></td>
+        <td><TMPL_VAR NAME=ZPMACROS_FRIENDLY></td>
+        <td><A HREF="edit.html?zpmacrosid=<TMPL_VAR NAME=ZPMACROS_ID>">Edit</A> 
+            <A HREF="del?zpmacrosid=<TMPL_VAR NAME=ZPMACROS_ID>">Delete</A></td>
+    </tr>
+</TMPL_LOOP>
+</table>
+<input type=submit name=New value=New>
+</form>
+</body>
+</html>

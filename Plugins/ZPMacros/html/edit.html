@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Sonos ZPMacros Edit</title>
+</head>
+<body>
+Fetch the following URL when the following sequence of buttons are hit in a short period of time.
+The URL can be anything, including external items.
+<TMPL_VAR NAME=ZPMACROS_INFO>
+<form method="GET" action="/ZPMacros/edit">
+<table columns=2>
+<tr><td>Buttons:</td><td> <input maxlength=30 size=30 type=text name=buttons value="<TMPL_VAR NAME=ZPMACROS_BUTTONS>"></td></tr>
+<tr><td></td><td>M = Mute,  U = Vol Up,  D = Vol Down</td></tr>
+<tr><td>Command:</td><td><select name=command><TMPL_VAR NAME=ZPMACROS_CMDMENU>
+                      </select></td></tr>
+<tr><td>URL:</td><td> <input maxlength=200 size=80 type=text name=url value="<TMPL_VAR NAME=ZPMACROS_URL>"></td></tr>
+<tr><td></td><td>%zone%, %artist%, %album%, %song%will be replaced in the urls.<br>
+                 So for example use %zone% for the current zone.  
+                 Instead of using %zone% you can also force the action on one zone by using one of the RICON_* values below.</td></tr>
+</table>
+<input type=hidden name=id value=<TMPL_VAR NAME=ZPMACROS_ID>>
+<input type=submit name=Save value=Save>
+<input type=submit name=Cancel value=Cancel>
+</form>
+<P>
+<table border=1>
+<tr><th>Zone ID</th><th>Zone Name</th><tr>
+<TMPL_LOOP NAME=ZONES_LOOP> 
+<tr><td><TMPL_VAR NAME=ZONE_ID></td><td><TMPL_VAR NAME=ZONE_NAME></td></tr>
+</TMPL_LOOP>
+</table>
+
+</body>
+</html>

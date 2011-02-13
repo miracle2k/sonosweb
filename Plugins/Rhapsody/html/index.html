@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>Rhapsody</title>
+</head>
+<body>
+This plugin allows you to interact with the Rhapsody service inside the Web Controller system.
+The plugin is needed because the Sonos controller software is what interacts with the Rhapsody
+services, and not the Sonos boxes themselves. 
+<p>
+<b>Known Issues</b>
+<ul>
+<li> Enabling Rhapsody Search support in the web controller will slow down searches, since Rhapsody are slow and not local.
+<li> Enabling Rhapsody currently breaks iSonos
+<li> Web controller server must be able to reach the internet
+<li> Can not add/play a Rhapsody Artist
+</ul>
+<p>
+
+<TMPL_IF NAME=RHAPSODY_CONFIGED>
+<form method="GET" action="/Rhapsody/index">
+<input type=checkbox name=benabled <TMPL_VAR NAME=RHAPSODY_BENABLED>> Enable Rhapsody browse support<br>
+<input type=checkbox name=senabled <TMPL_VAR NAME=RHAPSODY_SENABLED>> Enable Rhapsody search support<br>
+<input type=checkbox name=menabled <TMPL_VAR NAME=RHAPSODY_MENABLED>> Enable My Rhapsody support - <b>This will cause your Rhapsody password to be sent in the clear to Rhapsody</b><br>
+<input type=submit name=Save value=Save>
+</form>
+<TMPL_ELSE>
+Sorry, Rhapsody is not configured.  Please use the Sonos Windows or Mac softare and first
+configure your Rhapsody user name and password.
+</TMPL_IF>

@@ -1,0 +1,21 @@
+body
+{
+    font: 12px/14px verdana, sans-serif;
+    color: #788EAE;
+}
+
+a.ulink {
+    font: 8px/10px verdana, sans-serif;
+}
+
+A IMG {
+    border: 0px;
+}
+
+#pause, #repeatoff, #shuffleoff, #muteoff {
+    display: none;
+}
+
+#volume {
+    font: 24px/36px verdana;
+}

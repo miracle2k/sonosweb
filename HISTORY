@@ -1,0 +1,124 @@
+01/26/08  0.72  Support ZoneBridge (CLIQKLABS), don't show invisible zones
+09/29/07  0.71  Fixed bugs with Play/Stop/Repeat/Shuffle sometimes hanging the ui,
+                support more service types (CLIQKLABS), play radio by default (CLIQKLABS),
+                allow queue slot to be specified (CLIQKLABS)
+08/30/07  0.70  Fixed upnp_content_dir_browse (CLIQKLABS), fixed Rhapsody startup issue, 
+                change renew logic (CLIQKLABS), renew subscriptions every 30 minutes instead 
+                of every hour, changed default log level to 0
+04/14/07  0.69  Minor fixes, support firstsearch and maxsearch parameters to list queries
+11/19/06  0.68  Ignore ip in two more places
+11/18/06  0.67  Removed url length limit for pod casts, fixed Rhapsody search issue,
+                allow you to ignore certain IPs at the UPnP level
+10/07/06  0.66  AIM Plugin fix, text changes
+09/17/06  0.65  Support Rhapsody My library features, changed some icons back
+09/11/06  0.64  More Rhapsody support, Icons from isonos, ZPMacros, new version of 
+                sonosweb startup script (Marty)
+09/03/06  0.63  More Rhapsody support
+08/21/06  0.62  Support Artist Sampler with Rhapsody, Support Top items with Rhapsody,
+                Only require password with actions
+08/19/06  0.61  Rhapsody bug with adding songs directly, increased rhapsody search max to 150
+08/18/06  0.60  Initial Rhapsody Direct support, bug fix when decoding xml (groenoord),
+                search bug fix
+08/03/06  0.53  Stop alarm on volume change, alarm unlink fix, linked groups now
+                all change their volume the same amount, sleep now unlinks the zone
+07/28/06  0.52  Second pass at iSonos support, included iSONOS! 0.1.3 UI (thanks Xiao Yu!)
+07/26/06  0.51  First pass at iSonos support, sleep can now take bvolume and evolume on
+                the url for begin volume and end volume
+07/17/06  0.50  Empty zone fix, fixed Music DB rebuilding
+07/09/06  0.49  Some perl clean up, Reindex could create empty zone, redid localip code,
+                QUEUE_PLAYING/QUEUE_PAUSED per item now, MagicSong has cursong,
+                curalbum,curartist replacements
+06/24/06  0.48  Lots of AIM bot fixes/changes, can change MagicSong _Podcasts 
+                artist string
+06/19/06  0.47  Fixed bug where Line-In selection didn't work, fixed bug
+                where Run Now in Alarm Clock didn't work, allow Alarm Clock
+                to select Line-In, Alarm Clock quick sleep updates page now,
+                minor html clean up, included sonosweb Linux start up script
+                (thanks Marty), first version of AIM plugin, clean up log messages
+06/03/06  0.46  Included Nanny Plugin
+06/29/06  0.45  Start of Nanny Plugin, can link/unlink from simple view
+04/25/06  0.44  Fixed Podcast Refresh Data, allow All Zones to be used with Last.FM
+02/27/06  0.43  Sleep fixes, include windows build files, LinkSets can create
+                MagicSong 
+02/26/06  0.42  Minor changes for standalone windows version, extremly insecure 
+                Basic Auth (AndyN suggestion from forums) support added, added 
+                Run Now to Alarm Clock and highlight running Alarms, Alarms can
+                start with current volume (great for Sleep function), Podcast
+                won't abort with multiple Enclosers
+02/23/06  0.41  LinkSets can set default volume now, Podcast won't abort if an
+                error while fetching, MagicSong has %song%, %album%, %artist% now
+02/21/06  0.40  New LinkSets plugin, new MagicSong plugin, sort zones correctly in
+                plugins, fixed up html errors, Podcasts plugin can now autodownload
+                podcast OR use MagicSong, added -config to sonos.pl, support large
+                number of zones better
+02/09/06  0.36  Set UPnP timeout to 10 seconds
+02/08/06  0.35  Fixed problem with SOAP::Lite 0.67, and Podcast abort
+02/08/06  0.34  Nonos refresh doesn't invoke action again, hopefully fixed renew
+                problem, print debug info when fetching all the tracks fail, fixed a
+                bunch of perl warnings, Podcast deals with hanging sites better
+02/05/06  0.33  Support Party Mode (Link All), changed nonos to 3 columns, the old
+                is still available at index.orig.html, fixed problem with Firefox 1.5.0.1,
+                fixed Podcast crash with empty results
+02/03/06  0.32  Fixed problem with unlinking zone not linked, fixed crash with 
+                missing data
+01/31/06  0.31  Removed the Podcast requirement for RSSLite, Fixed podcast to deal
+                better with all types of issues (thanks Robert!), added new
+                ACTIVE_TRACK_TOT_0 and ACTIVE_TRACK_TOT_1 for Nic
+01/29/06  0.30  Totally redid how music search and display works (it now
+                works much like the real controller does), Up button in
+                most UIs, Added expand/collapse to podcast view, Podcast
+                supports auto adding to Favorite Stations, fixed 
+                transparency in some of the gifs
+01/16/06  0.26  pocketpc updates, new indexing that deals with 
+                upnp:originalTrackNumber being removed by Sonos
+01/16/06  0.25  All views now bold the selected zone in the zone list (thanks Nic!),
+                new experimental Podcasts plugin, pocketpc updates (thanks Nic!)
+01/15/06  0.24  Improved LastFM error handling, -debug option, new pocketpc.html,
+                mobile.html lets you see artists and albums, AlarmClock allows
+                Radio
+01/07/06  0.23  Deal & Display Linked Zones better
+01/05/06  0.22  More bug fixes, AlarmClock now has Playtime and Playmode
+01/03/06  0.21  LastFM start up issue fixed (thanks Craig & Nic!)
+01/03/06  0.20  Hopefully fixed the getService issue and the LastFM issue
+01/03/06  0.19  Doh, forgot to include new plugins in tar file, fixed 
+                AlarmClock html (thanks Rob!)
+01/02/06  0.18  AlarmClock plugin shows Playlists, added MusicLog plugin,
+                added ViewState plugin, LineIn support, more code clean up,
+                renamed pprefs.pl to prefsdb.pl (prefs will be lost, sorry),
+                initial LastFM support, change slash to dash in mp3 tags
+12/28/05  0.17  Fixed unmute bug in AlarmClock plugin, switch to 302 
+                redirects, fixed some perl warnings
+12/27/05  0.16  Album art in js music pane, code clean up (more to come),
+                initial plugin support (will probably change),
+                AutoReindex plugin, AlarmClock plugin, Reindex button
+                does a real Sonos reindex, autodetect when we need
+                to do our special reindex, do a few more things the
+                UPnP way, search supports artist:, album: and song:
+12/17/05  0.15  Album art support, update to nonos view (thanks Chris!)
+11/16/05  0.14  Better i18n support (try and do everything with utf8),
+                fixed broken links in simple interface, increased max
+                search results to 400, decreased size of HTML generated
+                by AJAX interfaces, first pass of Konfabulator support
+11/07/05  0.13  Music DB only stores needed fields
+11/04/05  0.12  Ability to Save and Delete playlists
+10/31/05  0.11  Fixed missing request crash, and auto reindex on startup
+10/16/05  0.10  Fixed some AJAX bugs, new blue interface (alpha quality),
+                fixed sonos.pl bug where it was doing the templates on 
+                everything
+10/08/05  0.09  Fixed bug when only 1 playlist, Fix bug with simple
+                UI where hitting any volume buttons would repeat the
+                command, new nonos view (thanks Josh!), new simplejs view 
+07/08/05  0.08  x.gif is really a gif, status.xml which is
+                a cheesy RSS feed
+07/07/05  0.07  Support Next Track in templates, support
+                for each zone what is going on,
+                new status.html
+07/07/05  0.06  fixed the problem with UPnP hanging under windows
+07/04/05  0.05  Don't freak out with Linked Zones
+07/04/05  0.04  Fixed startup issue if no playlists
+06/29/05  0.03  Radio Support, Playlist Support, uri_encode fixes, 
+                random value added to defeat mobile caching, 
+                slightly improved UI
+06/24/05  0.02  Bug fixes, mobile support (mobile.html), 
+                renew UPnP subscriptions, better logging
+06/20/05  0.01  Initial Version

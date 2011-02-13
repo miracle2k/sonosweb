@@ -1,0 +1,131 @@
+#!/bin/sh
+#
+# sonosweb:	Sonos web controller software for Linux
+#
+# chkconfig:	2345 59 41
+# description:	Starts the sonosweb perl script
+#
+# * Edit the WHO and WHERE lines below
+# * Copy this file into /etc/rc.d/init.d
+# * Run "chkconfig --add sonosweb"
+
+#sonosweb script version number 2
+
+#User to run sonosweb under.  Please do NOT use root.
+WHO=nobody
+
+#Directory sonosweb is installed in.  
+#Make sure the WHO user can write to this directory.
+WHERE=/usr/local/sonos
+
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+. /etc/sysconfig/network
+
+[ ${NETWORKING} = "no" ] && exit 0
+
+start() 
+{
+        echo -n $"Starting sonosweb: "
+
+	#Make sure ${WHO} is not root
+	if [ ${WHO} == "root" ] ; then
+		echo -e "\n	Username specified in file $0"
+		echo "	is root! Sonosweb should be run as a nonroot"
+		echo -n "	user only!"
+		echo_failure
+		echo
+		return 1
+	fi
+
+	#Make sure ${WHO} exists
+	cat /etc/passwd | awk '{ FS=":" }{ print $1 }' | grep -w "${WHO}" >/dev/null 2>&1
+	if [ $? -ne 0 ] ; then
+		#username specified doesnt exist
+		echo -e "\n	Username specified ( ${WHO} ) in"
+		echo -n "	file $0 does not exist"
+		echo_failure
+		echo
+		return 1
+	fi
+
+	#Make sure ${WHERE} exists
+	if [ ! -d ${WHERE} ] ; then
+		#dir does not exist
+		echo -e "\n	Directory specified ( ${WHERE} )"
+		echo -n "	in file $0 does not exist"
+		echo_failure
+		echo
+		return 1
+	fi
+
+	#Make sure ${WHERE} has the sonosweb software installed
+	if [ ! -x ${WHERE}/sonos.pl ] ; then
+		#sonosweb software does not appear to be installed where we
+		#expect it to be
+		echo -e "\n	Sonosweb software does not appear to be"
+		echo "	installed in directory specified ( ${WHERE} )"
+		echo -n "	in file $0"
+		echo_failure
+		echo
+		return 1
+	fi
+
+	#Make sure ${WHERE} is writable by ${WHO}
+	#(yes I did pick README on purpose... if this code goes south the
+	#README file isnt important... and using it prevents creating a new
+	#file in the installation directory)
+	su -l ${WHO} -c "touch ${WHERE}/README" >/dev/null 2>&1
+	if [ $? -ne 0 ] ; then
+		#sonos user cant write to directory
+		echo -e "\n	User specified ( ${WHO} ) does not appear to be able to write to"
+		echo -n "	directory specified ( ${WHERE} )"
+		echo_failure
+		echo
+		return 1
+	fi
+
+	#If we get this far everything looks good for launch
+	su -l ${WHO} -c "cd ${WHERE} ; ./sonos.pl >/dev/null 2>&1 &"
+	echo_success
+	touch /var/lock/subsys/sonosweb
+        echo
+	return 0
+}
+
+stop() 
+{
+        echo -n $"Shutting down sonosweb: "
+	killproc sonos.pl
+	rm -f  /var/lock/subsys/sonosweb
+	echo_success
+        echo
+	return 0
+}
+
+
+# See how we were called.
+case "$1" in
+  start)
+	start
+	retcode=$?
+        ;;
+  stop)
+	stop
+	retcode=$?
+        ;;
+  restart|reload)
+	stop
+	start
+	;;
+  condrestart)
+	[ -e /var/lock/subsys/sonosweb ] && (stop; start)
+	;;
+  *)
+        echo $"Usage: $0 {start|stop|restart|reload|condrestart}"
+        retcode=1
+esac
+
+exit ${retcode}

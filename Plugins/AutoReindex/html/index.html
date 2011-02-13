@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>Sonos Auto Reindex</title>
+</head>
+<body>
+Configure auto reindexing every so many minutes.<P>
+To turn on, make sure the checkbox is checked, and set an interval.<BR>
+To turn off, just uncheck the checkbox.<BR>
+Make sure to hit the Save button.<BR>
+<P>
+<form method="GET" action="/AutoReindex/settings">
+Enable Auto Reindexing: <input name="on" type="checkbox" <TMPL_VAR NAME="AUTOREINDEX_CHECKED">><BR>
+Minutes: <input name="updatemin" type="text" size="10" value="<TMPL_VAR NAME="AUTOREINDEX_UPDATEMIN">"> (10 minutes min)<BR>
+<input name="submit" type="submit" value="Save"><BR>
+</form>
+<P>
+Most of the UIs have a Reindex button, to perform a single reindex.
+</body>
+</html>
