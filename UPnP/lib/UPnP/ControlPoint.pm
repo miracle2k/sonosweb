@@ -275,9 +275,11 @@ sub _createDevice {
 
 	my $base;
 	if ($response->is_success) {
+            if ($response->content ne '') {
 		($device, $base) = $self->parseDeviceDescription($response->content,
 													  {Location => $location},
 													  {ControlPoint => $self});
+            }
 	}
 	else {
 		carp("Loading device description failed with error: " . 
